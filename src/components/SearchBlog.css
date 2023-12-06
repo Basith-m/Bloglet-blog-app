@@ -1,0 +1,22 @@
+.container{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container{
+    border: 1px solid grey;
+    width: 76%;
+    height: 50px;
+    padding: 5px 20px;
+    border-radius: 30px;
+}
+
+.container input{
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100%;
+}

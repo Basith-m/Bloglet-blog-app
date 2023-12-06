@@ -1,0 +1,35 @@
+.home{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner-container{
+    height: 80vh;
+    background-color: black;
+    background: url('/public/images/blue-surface-with-study-tools.jpg');
+    background-size: cover;
+}
+
+.banner-container h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.banner-btn{
+    height: 50px;
+    width: 9rem;
+    text-decoration: none;
+}
+
+.session h1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.collapse-container{
+   border-top: 2px solid rgb(216, 216, 216); 
+   padding: 46px 20px;
+}

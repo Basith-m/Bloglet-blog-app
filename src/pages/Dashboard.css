@@ -1,0 +1,15 @@
+.dashboard-container{
+    width: 100%;
+    padding: 30px 0px;
+}
+
+.sticky-top-toggle {
+    position: sticky;
+    top: calc(100vh - 60px);
+    z-index: 100;
+    padding: 0px 30px;
+}
+
+
+
+
