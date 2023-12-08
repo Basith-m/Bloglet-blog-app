@@ -22,7 +22,9 @@ function Dashboard() {
 
             <div id='#top'></div>
 
-            <SearchBlog />
+            <div className='search-container'>
+                <SearchBlog />
+            </div>
 
             <div className="sticky-top-toggle">
                 <a href='#top' className='top-toggle'>
@@ -30,12 +32,12 @@ function Dashboard() {
                 </a>
             </div>
 
-            <Row className='dashboard-container align-items-center m-0'>
+            <Row style={{marginTop:'118px'}} className='dashboard-container align-items-center mx-0'>
                 <Col></Col>
                 <Col sm={12} md={10} lg={8}>
                     <BlogView />
                 </Col>
-                <Col></Col>            
+                <Col></Col>
             </Row>
         </>
     );
