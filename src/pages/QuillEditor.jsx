@@ -30,8 +30,10 @@ function QuillEditor() {
           "Authorization": `Bearer ${token}`
         };
 
+        const reqBody = JSON.stringify({ date, content });
+
         // api call
-        const result = await addBlogAPI(blog, reqHeader)
+        const result = await addBlogAPI(reqBody, reqHeader)
         console.log(result);
         if (result.status === 200) {
           console.log(result.data);
