@@ -2,14 +2,23 @@ import { Navbar, Container, Row, Col } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import './MyPosts.css'
 import BlogView from "../components/BlogView"
+import { useEffect, useState } from "react"
 
 function MyPosts() {
 
     const navigate = useNavigate()
 
+    const [username, setUsername] = useState()
+
     const handleClickNewBlog = () => {
         navigate('/blogEditor')
     }
+
+    useEffect(() => {
+        if(sessionStorage.getItem("existingUser")){
+            setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username);
+        }
+    },[])
 
     return (
         <>
@@ -20,8 +29,8 @@ function MyPosts() {
             </Navbar >
 
             <div className="myPost-container px-5 mb-3">
-                <h3>Welcome <span className="text-warning">Abdul Basith m</span></h3>
-                <div onClick={handleClickNewBlog} className="btn btn-primary shadow border border-2 d-flex align-items-center justify-content-center me-4">
+                <h3>Welcome <span className="text-warning">{username}</span></h3>
+                <div onClick={handleClickNewBlog} className="btn btn-warning shadow d-flex align-items-center justify-content-center me-4 fw-semibold">
                     <i class="fa-solid fa-plus fs-5 me-2"></i>
                     <span className="fs-5">New Blog</span>
                 </div>

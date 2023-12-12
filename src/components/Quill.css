@@ -1,4 +1,3 @@
 .ql-editor{
-    height: 60vh;
-    overflow: hidden;
+    min-height: 60vh;
 }
