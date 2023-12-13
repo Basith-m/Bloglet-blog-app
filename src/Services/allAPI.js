@@ -15,3 +15,8 @@ export const loginAPI = async (user) => {
 export const addBlogAPI = async (reqBody,reqHeader) => {
     return await commonAPI("POST",`${SERVER_URL}/blog/add`,reqBody,reqHeader)
 }
+
+// all blogs
+export const  allllBlogsAPI = async (reqHeader) => {
+    return await commonAPI("GET",`${SERVER_URL}/blogs/dashboard`,"",reqHeader)
+}

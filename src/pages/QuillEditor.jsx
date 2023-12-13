@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import Quill from '../components/Quill';
 import { addBlogAPI } from '../Services/allAPI';
-import { Token } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function QuillEditor() {
+
+  const navigate = useNavigate()
 
   const [blog, setBlog] = useState({
     date: new Date(),
@@ -30,19 +33,27 @@ function QuillEditor() {
           "Authorization": `Bearer ${token}`
         };
 
-        const reqBody = JSON.stringify({ date, content });
-
         // api call
-        const result = await addBlogAPI(reqBody, reqHeader)
+        const result = await addBlogAPI(blog, reqHeader)
         console.log(result);
         if (result.status === 200) {
           console.log(result.data);
+          alert("Blog Added...")
+          navigate('/dashboard')
         } else {
           console.log(result);
-          console.log(result.response.data);
+          toast.warning(result.response.data);
         }
       }
     }
+  }
+
+  const handleDiscard = () => {
+    setBlog({
+      date:"",
+      content:""
+    })
+    navigate('/dashboard')
   }
 
   useEffect(() => {
@@ -61,7 +72,7 @@ function QuillEditor() {
       {isError !== null && <div className="my-2 fw-bold text-danger"> {isError} </div>}
 
       <div className='mt-3 mb-4'>
-        <button className='btn btn-dark'>Discard</button>
+        <button className='btn btn-dark' onClick={handleDiscard}>Discard</button>
         <button className='btn btn-outline-dark ms-3' onClick={handleSave}>Save</button>
       </div>
     </div>
