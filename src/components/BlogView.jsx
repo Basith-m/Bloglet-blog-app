@@ -3,14 +3,16 @@ import './BlogView.css'
 import { Link } from 'react-router-dom'
 import DOMPurify from 'dompurify';
 import { useContext } from 'react';
-import { BlogContext } from '../Context/BlogContext';
+import { BlogDateContext } from '../Context/DateContext';
+import EditBlog from './EditBlog';
 
 function BlogView({ insideMyPost, blog }) {
 
     // console.log(blog);
-
-    const { formattedTime } = useContext(BlogContext);
+    const {postDate, setPostDate} = useContext(BlogDateContext)
     const sanitizedContent = DOMPurify.sanitize(blog.content);
+
+    console.log(`postdate:${postDate}`);
 
     return (
         <>
@@ -20,7 +22,7 @@ function BlogView({ insideMyPost, blog }) {
 
                         <div className='blog-head-inside-myPost p-2 shadow'>
                             <div className='fs-4 text-black d-flex justify-content-end align-items-center w-100 p-2'>
-                                <Link to={'/blogEditor'}><i class="fa-solid fa-pen-to-square mx-3 text-success"></i></Link>
+                                <EditBlog blog={blog} />
                                 <i className="fa-solid fa-trash mx-2 text-danger"></i>
                             </div>
                         </div>
@@ -39,7 +41,7 @@ function BlogView({ insideMyPost, blog }) {
                         </div>
                 }
                 <div className='d-glex justify-content-start p-3'>
-                    <span>{formattedTime}</span>
+                    <span>{postDate}</span>
                 </div>
 
                 <div className='blog-body px-4'>

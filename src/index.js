@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './bootstrap.min.css'
-import { BlogProvider } from './Context/BlogContext';
+import DateContext from './Context/DateContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BlogProvider>
+    <DateContext>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </BlogProvider>
+    </DateContext>
   </React.StrictMode>
 );
 
