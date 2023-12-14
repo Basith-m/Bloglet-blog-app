@@ -12,8 +12,6 @@ function BlogView({ insideMyPost, blog }) {
     const {postDate, setPostDate} = useContext(BlogDateContext)
     const sanitizedContent = DOMPurify.sanitize(blog.content);
 
-    console.log(`postdate:${postDate}`);
-
     return (
         <>
             <div className='blog-container'>
@@ -22,7 +20,7 @@ function BlogView({ insideMyPost, blog }) {
 
                         <div className='blog-head-inside-myPost p-2 shadow'>
                             <div className='fs-4 text-black d-flex justify-content-end align-items-center w-100 p-2'>
-                                <EditBlog blog={blog} />
+                                <EditBlog userBlog={blog} />
                                 <i className="fa-solid fa-trash mx-2 text-danger"></i>
                             </div>
                         </div>

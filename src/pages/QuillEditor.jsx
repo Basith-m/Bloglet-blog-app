@@ -4,13 +4,22 @@ import { addBlogAPI } from '../Services/allAPI';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { BlogDateContext } from '../Context/DateContext';
+import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 
 function QuillEditor() {
   const navigate = useNavigate();
-  const { postDate, setPostDate } = useContext(BlogDateContext)
+  const { postDate, setPostDate } = useContext(BlogDateContext);
+
+  const location = useLocation();
+  const { userBlog } = location.state || {};
+
+  console.log(userBlog);
+
+  let currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
 
   const [blog, setBlog] = useState({
-    date: new Date(),
+    date: currentDate,
     name: "",
     content: ""
   });
@@ -67,10 +76,14 @@ function QuillEditor() {
   useEffect(() => {
     if (sessionStorage.getItem("existingUser")) {
       const existingUser = JSON.parse(sessionStorage.getItem("existingUser"));
-      setBlog({ ...blog, name: existingUser.username, date: new Date() });
-      setPostDate(new Date().toString());
+      setPostDate(moment().format('MMMM Do YYYY, h:mm:ss a'));
+      setBlog((prevBlog) => ({
+        ...prevBlog,
+        name: existingUser.username
+      }));
     }
   }, [postDate]);
+
 
   return (
     <div className='d-flex flex-column justify-content-center px-5 py-4'>
@@ -88,3 +101,4 @@ function QuillEditor() {
 }
 
 export default QuillEditor;
+

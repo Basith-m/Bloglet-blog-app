@@ -2,7 +2,6 @@ import React, { createContext, useState } from 'react'
 export const BlogDateContext = createContext()
 
 function DateContext({ children }) {
-    // const [formattedTime, setFormattedTime] = useState('');
     const [postDate, setPostDate] = useState('')
     return (
         <>

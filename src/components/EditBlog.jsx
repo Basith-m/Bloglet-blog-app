@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+// EditBlog.js
+import { Link } from 'react-router-dom';
 
-function EditBlog({ blog }) {
-
-    console.log(blog);
+function EditBlog({ userBlog }) {
 
   return (
     <>
-        <Link to={'/blogEditor'}><i class="fa-solid fa-pen-to-square mx-3 text-success"></i></Link>
+      <Link to={{ pathname: `/blogEditor`, state: { userBlog } }}>
+        <i className="fa-solid fa-pen-to-square mx-3 text-success"></i>
+      </Link>
     </>
-  )
+  );
 }
 
-export default EditBlog
+export default EditBlog;
